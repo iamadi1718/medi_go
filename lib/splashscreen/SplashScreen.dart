@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:medi_go/custombackground/CustomBackground.dart';
 import 'package:medi_go/onboardingpage/Onboarding.dart';
@@ -20,6 +19,7 @@ class _SplashscreenState extends State<Splashscreen> {
       Navigator.push(context, MaterialPageRoute(builder: (context)=>Onboarding()));
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Custombackground(
@@ -41,3 +41,6 @@ class _SplashscreenState extends State<Splashscreen> {
 }
 
     
+
+
+
