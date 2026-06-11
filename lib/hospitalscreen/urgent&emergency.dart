@@ -25,12 +25,19 @@ class UrgentEmergencyScreen extends StatelessWidget {
                 children: [
                   // Header Row with back button and title
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 8.0,
+                    ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 22),
+                          icon: const Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                            size: 22,
+                          ),
                           onPressed: () => Navigator.pop(context),
                         ),
                         const SizedBox(width: 8),
@@ -52,7 +59,10 @@ class UrgentEmergencyScreen extends StatelessWidget {
 
                   // White Emergency Pill Badge
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(24),
@@ -102,7 +112,10 @@ class UrgentEmergencyScreen extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "Search Hospitals",
-                  hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+                  hintStyle: TextStyle(
+                    color: Colors.grey.shade500,
+                    fontSize: 14,
+                  ),
                   prefixIcon: const Icon(Icons.search, color: Colors.black54),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(vertical: 12),
@@ -155,6 +168,34 @@ class UrgentEmergencyScreen extends StatelessWidget {
                     debugPrint("City Hospital directions clicked");
                   },
                 ),
+                _emergencyHospitalCard(
+                  name: "City Hospital",
+                  distance: "2.5 km",
+                  statusText: "24×7 Emergency",
+                  logoBgColor: const Color(0xFFE0F2F1),
+                  logoColor: const Color(0xFF0F8894),
+                  onWaitTimes: () {
+                    debugPrint("City Hospital wait times clicked");
+                  },
+                  onDirections: () {
+                    debugPrint("City Hospital directions clicked");
+                  },
+                ),
+
+                _emergencyHospitalCard(
+                  name: "City Hospital",
+                  distance: "2.5 km",
+                  statusText: "24×7 Emergency",
+                  logoBgColor: const Color(0xFFE0F2F1),
+                  logoColor: const Color(0xFF0F8894),
+                  onWaitTimes: () {
+                    debugPrint("City Hospital wait times clicked");
+                  },
+                  onDirections: () {
+                    debugPrint("City Hospital directions clicked");
+                  },
+                ),
+
                 const SizedBox(height: 20),
               ],
             ),
@@ -220,7 +261,11 @@ class UrgentEmergencyScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        Icon(Icons.location_on, size: 14, color: Colors.grey.shade600),
+                        Icon(
+                          Icons.location_on,
+                          size: 14,
+                          color: Colors.grey.shade600,
+                        ),
                         const SizedBox(width: 2),
                         Text(
                           distance,
@@ -241,10 +286,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
                 children: [
                   const Text(
                     "Open Now:",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Colors.black54,
-                    ),
+                    style: TextStyle(fontSize: 11, color: Colors.black54),
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -270,7 +312,10 @@ class UrgentEmergencyScreen extends StatelessWidget {
                 onPressed: onWaitTimes,
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.grey.shade300, width: 1.2),
-                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 8,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -293,17 +338,17 @@ class UrgentEmergencyScreen extends StatelessWidget {
                   backgroundColor: const Color(0xFF0F8894),
                   foregroundColor: Colors.white,
                   elevation: 0,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 8,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
                 child: const Text(
                   "Directions",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                 ),
               ),
             ],

@@ -13,10 +13,12 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
-    
     super.initState();
-    Timer(Duration(seconds: 3), (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Onboarding()));
+    Timer(Duration(seconds: 5), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Onboarding()),
+      );
     });
   }
 
@@ -24,23 +26,27 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return Custombackground(
       widget: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-         Image.asset('assets/images/splash.png',
-         height: 123,
-         width: 144,
-         ),
-         Spacer(),
-         Text('MediGo',style: TextStyle(fontSize: 32,fontWeight: FontWeight.w600,letterSpacing: -0.24,),)
-      ],
-    ),
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 123,
+            width: 144,
+            child: Image.asset('assets/images/splash.png', fit: BoxFit.contain),
+          ),
+          SizedBox(height: 50),
+          Text(
+            'MediGo',
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.24,
+              color: Colors.white,
+              decoration: TextDecoration.none,
+            ),
+          ),
+        ],
+      ),
     );
-   
   }
 }
-
-    
-
-
-

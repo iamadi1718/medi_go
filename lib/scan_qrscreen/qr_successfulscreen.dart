@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_go/Dashboardscreen/dashboardscreen.dart';
 
 class QrSuccessfulscreen extends StatelessWidget {
   const QrSuccessfulscreen({super.key});
@@ -255,7 +256,10 @@ class QrSuccessfulscreen extends StatelessWidget {
             // Back to Home Button
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).popUntil((route) => route.isFirst);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboardscreen()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF0F8894),

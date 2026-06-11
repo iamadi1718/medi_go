@@ -8,21 +8,40 @@ class Custombutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:onTaps,
+      onTap: onTaps,
       child: Container(
-        height: 34,
         margin: EdgeInsets.all(16),
-        padding: EdgeInsets.symmetric(vertical: 16,horizontal: 8),
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         width: 300,
+        height: 50,
         decoration: BoxDecoration(
+          color: Colors.white,
           borderRadius: BorderRadius.circular(32),
-        ),
-        child: Row(
-          children: [
-            Text(text,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
-            SizedBox(width: 20,),
-            Icon(Icons.arrow_forward,color: Colors.black,),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: const Offset(0, 4),
+              blurRadius: 4,
+            ),
           ],
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(width: 20),
+              Text(
+                text,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+
+              Icon(Icons.arrow_forward, color: Colors.black),
+            ],
+          ),
         ),
       ),
     );

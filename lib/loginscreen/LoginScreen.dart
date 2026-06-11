@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medi_go/Dashboardscreen/dashboardscreen.dart';
 import 'package:medi_go/Signupscreen/Signupscreen.dart';
 import 'package:medi_go/custombackground/CustomBackground.dart';
 import 'package:medi_go/custombutton/CustomButton.dart';
+import 'package:medi_go/customfield/CustomTextfield.dart';
+import 'package:medi_go/homepage/Homepage.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -13,69 +16,138 @@ class Loginscreen extends StatefulWidget {
 class _LoginscreenState extends State<Loginscreen> {
   @override
   Widget build(BuildContext context) {
-    return Custombackground(
-      widget: Column(
-        children: [
-          Row(
-            children: [
-              Image.asset('assets/images/splash.png'),
-              OutlinedButton(onPressed: () {}, child: Text('Skip')),
-            ],
-          ),
-          Text(
-            'Welcome Back',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
-          ),
-          Text(
-            'Log in to access your verified healthcare profile.',
-            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
-          ),
-          Custombutton(text: 'Login', onTaps: () {}),
-
-          Row(
-            children: [
-              Expanded(child: Divider(color: Colors.white70, thickness: 1)),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Text(
-                  "Or connect with",
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
+    return SafeArea(
+      child: Custombackground(
+        widget: Padding(
+          padding: EdgeInsets.all(10),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset('assets/images/splash.png'),
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.white, width: 1),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'Skip',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Expanded(child: Divider(color: Colors.white70, thickness: 1)),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/google.png', height: 36, width: 36),
-              SizedBox(width: 10),
-              Image.asset('assets/images/apple.png', height: 36, width: 36),
-              SizedBox(width: 10),
-              Image.asset('assets/images/third.png', height: 36, width: 36),
-            ],
-          ),
-          Row(
-            children: [
-              Text('Don’t have an account ? '),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Signupscreen()),
-                  );
-                },
-                child: Text(
-                  'Sign up',
+                SizedBox(height: 140),
+                Text(
+                  'Welcome Back',
                   style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ],
+                Text(
+                  'Log in to access your verified healthcare profile.',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
+                ),
+                Customtextfield(
+                  icon: Icon(Icons.email),
+                  text: 'Enter your email/phone number',
+                ),
+                Customtextfield(
+                  icon: Icon(Icons.lock),
+                  text: 'Enter your password',
+                ),
+
+                Custombutton(
+                  text: 'Login',
+                  onTaps: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Homepage(),
+                      ),
+                    );
+                  },
+                ),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(color: Colors.white70, thickness: 1),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Text(
+                        "Or connect with",
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(color: Colors.white70, thickness: 1),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/google.png',
+                      height: 36,
+                      width: 36,
+                    ),
+                    SizedBox(width: 20),
+                    Image.asset(
+                      'assets/images/apple.png',
+                      height: 36,
+                      width: 36,
+                    ),
+                    SizedBox(width: 20),
+                    Image.asset(
+                      'assets/images/third.png',
+                      height: 36,
+                      width: 36,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have an account ? ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Signupscreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
