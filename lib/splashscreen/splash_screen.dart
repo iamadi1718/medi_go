@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:medi_go/custombackground/CustomBackground.dart';
 import 'package:medi_go/onboardingpage/Onboarding.dart';
 
-class Splashscreen extends StatefulWidget {
-  const Splashscreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<Splashscreen> createState() => _SplashscreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashscreenState extends State<Splashscreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Onboarding()),
+        MaterialPageRoute(builder: (context) => const Onboarding()),
       );
     });
   }
@@ -34,8 +34,8 @@ class _SplashscreenState extends State<Splashscreen> {
             width: 144,
             child: Image.asset('assets/images/splash.png', fit: BoxFit.contain),
           ),
-          SizedBox(height: 50),
-          Text(
+          const SizedBox(height: 50),
+          const Text(
             'MediGo',
             style: TextStyle(
               fontSize: 32,

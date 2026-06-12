@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_go/bookappointment/bookappointment.dart';
 
 class UrgentEmergencyScreen extends StatelessWidget {
   const UrgentEmergencyScreen({super.key});
@@ -130,6 +131,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               children: [
                 _emergencyHospitalCard(
+                  context: context,
                   name: "City Hospital",
                   distance: "2.5 km",
                   statusText: "24×7 Emergency",
@@ -143,6 +145,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
                   },
                 ),
                 _emergencyHospitalCard(
+                  context: context,
                   name: "City Hospital",
                   distance: "2.5 km",
                   statusText: "24×7 Emergency",
@@ -156,6 +159,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
                   },
                 ),
                 _emergencyHospitalCard(
+                  context: context,
                   name: "City Hospital",
                   distance: "2.5 km",
                   statusText: "24×7 Emergency",
@@ -206,6 +210,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
   }
 
   Widget _emergencyHospitalCard({
+    required BuildContext context,
     required String name,
     required String distance,
     required String statusText,
@@ -214,36 +219,45 @@ class UrgentEmergencyScreen extends StatelessWidget {
     required VoidCallback onWaitTimes,
     required VoidCallback onDirections,
   }) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.shade200, width: 1.5),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Top row (Logo, Info, Status)
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Logo
-              Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: logoBgColor,
-                  shape: BoxShape.circle,
+    return GestureDetector(
+      // onTap: () {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const BookAppointmentscreen(),
+      //     ),
+      //   );
+      // },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 14),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.grey.shade200, width: 1.5),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Top row (Logo, Info, Status)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Logo
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: logoBgColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.local_hospital_outlined,
+                    color: logoColor,
+                    size: 24,
+                  ),
                 ),
-                child: Icon(
-                  Icons.local_hospital_outlined,
-                  color: logoColor,
-                  size: 24,
-                ),
-              ),
-              const SizedBox(width: 10),
+                const SizedBox(width: 10),
 
               // Info (Name & Location)
               Expanded(
@@ -261,11 +275,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 14,
-                          color: Colors.grey.shade600,
-                        ),
+                        Icon(Icons.location_on, size: 14, color: Colors.grey.shade600),
                         const SizedBox(width: 2),
                         Text(
                           distance,
@@ -286,7 +296,10 @@ class UrgentEmergencyScreen extends StatelessWidget {
                 children: [
                   const Text(
                     "Open Now:",
-                    style: TextStyle(fontSize: 11, color: Colors.black54),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Colors.black54,
+                    ),
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -312,10 +325,7 @@ class UrgentEmergencyScreen extends StatelessWidget {
                 onPressed: onWaitTimes,
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.grey.shade300, width: 1.2),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                    vertical: 8,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -338,17 +348,17 @@ class UrgentEmergencyScreen extends StatelessWidget {
                   backgroundColor: const Color(0xFF0F8894),
                   foregroundColor: Colors.white,
                   elevation: 0,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 8,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
                 child: const Text(
                   "Directions",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

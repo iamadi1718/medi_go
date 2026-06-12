@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_go/bookappointment/bookappointment.dart';
 
 class HospitalCard extends StatelessWidget {
   final String name;
@@ -47,11 +48,7 @@ class HospitalCard extends StatelessWidget {
               color: logoBgColor,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              logoIcon,
-              color: logoColor,
-              size: 28,
-            ),
+            child: Icon(logoIcon, color: logoColor, size: 28),
           ),
           const SizedBox(width: 12),
 
@@ -78,9 +75,14 @@ class HospitalCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF0F4C5C), // Elegant dark teal/blue
+                        color: const Color(
+                          0xFF0F4C5C,
+                        ), // Elegant dark teal/blue
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -99,7 +101,11 @@ class HospitalCard extends StatelessWidget {
                 // Location/Distance
                 Row(
                   children: [
-                    Icon(Icons.location_on, size: 14, color: Colors.grey.shade600),
+                    Icon(
+                      Icons.location_on,
+                      size: 14,
+                      color: Colors.grey.shade600,
+                    ),
                     const SizedBox(width: 2),
                     Text(
                       distance,
@@ -117,10 +123,7 @@ class HospitalCard extends StatelessWidget {
                   children: [
                     const Text(
                       "Ratings: ",
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black54,
-                      ),
+                      style: TextStyle(fontSize: 12, color: Colors.black54),
                     ),
                     _buildStars(rating),
                   ],
@@ -143,7 +146,14 @@ class HospitalCard extends StatelessWidget {
 
           // Right: Book Appointment Button
           ElevatedButton(
-            onPressed: onBook,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookAppointmentscreen(),
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0F8894),
               foregroundColor: Colors.white,

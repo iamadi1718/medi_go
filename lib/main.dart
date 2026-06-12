@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:medi_go/splashscreen/SplashScreen.dart';
-
+import 'package:medi_go/CartPage/AddCart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
-      home: Splashscreen(),
-
+    return const MaterialApp(
+      home: AddCart(),
       debugShowCheckedModeBanner: false,
-     
-
     );
   }
 }
