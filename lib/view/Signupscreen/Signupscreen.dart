@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_go/addresspage/Addaddresspage.dart';
 import 'package:medi_go/view/custombutton/CustomButton.dart';
 import 'package:medi_go/view/customfield/CustomTextfield.dart';
 import 'package:medi_go/view/loginscreen/LoginScreen.dart';
@@ -86,7 +87,9 @@ class _SignupscreenState extends State<Signupscreen> {
                     onTaps: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Loginscreen()),
+                        MaterialPageRoute(
+                          builder: (context) => Addaddresspage(),
+                        ),
                       );
                     },
                   ),

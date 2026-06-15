@@ -130,13 +130,13 @@ class Settingscreen extends StatelessWidget {
                           subtitle:
                               'New feature announcements and\nplatform news',
                         ),
-                        Divider(thickness: 1),
+                        // Divider(thickness: 1),
                       ],
                     ),
                   ),
                   SizedBox(height: 15),
                   Customsettings(
-                    icon: Icon(Icons.dataset_rounded),
+                    icon: Icon(Icons.dataset_rounded, color: Colors.teal),
                     first: 'Privacy & Data',
                     widget: Column(
                       children: [
@@ -167,7 +167,7 @@ class Settingscreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   Customsettings(
-                    icon: Icon(Icons.logout),
+                    icon: Icon(Icons.logout, color: Colors.teal),
                     first: 'Account Actions',
                     widget: Column(
                       children: [
@@ -183,7 +183,7 @@ class Settingscreen extends StatelessWidget {
                         ),
                         Divider(thickness: 1),
                         Settingstile(
-                          icon: Icon(Icons.login, color: Colors.red),
+                          icon: Icon(Icons.logout, color: Colors.red),
                           trailing: MySwitch(),
                           title: 'Logout',
                           subtitle: 'Securely sign out of your account',
