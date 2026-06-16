@@ -5,6 +5,7 @@ import 'package:medi_go/view/Dashboardscreen/hospital_card.dart';
 import 'package:medi_go/view/Dashboardscreen/nearby_partners_title.dart';
 import 'package:medi_go/view/Dashboardscreen/qr_section.dart';
 import 'package:medi_go/view/Dashboardscreen/welcome_card.dart';
+import 'package:medi_go/view/PharmacyPage/about_store.dart';
 
 import 'package:medi_go/view/bookappointment/bookappointment.dart';
 import 'package:medi_go/view/hospitalscreen/urgent&emergency.dart';
@@ -19,13 +20,22 @@ class Dashboardscreen extends StatefulWidget {
 }
 
 class _DashboardscreenState extends State<Dashboardscreen> {
+  String selectedCategory = "Hospitals";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0xFF0E8A97),
+        backgroundColor: const Color(0xFF0F8894),
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
+        title: Image.asset(
+          'assets/images/logo.png',
+          height: 36,
+          fit: BoxFit.contain,
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -44,7 +54,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
           ),
           IconButton(
             onPressed: () {
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const Testresultdetails(),
@@ -81,7 +91,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                       ),
                     ),
                   ),
-      
+
                   // Overlapping Welcome + QR Card
                   Positioned(
                     top: 85,
@@ -124,84 +134,119 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                 ],
               ),
             ),
-      
+
             const SizedBox(height: 16),
-      
+
             // Category Chips
-            const CategoryChips(),
-      
+            CategoryChips(
+              selectedCategory: selectedCategory,
+              onCategoryChanged: (category) {
+                debugPrint("Dashboardscreen: Category updated to $category");
+                setState(() {
+                  selectedCategory = category;
+                });
+              },
+            ),
+
             const SizedBox(height: 24),
-      
+
             // Nearby Partners Title
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: NearbyPartnersTitle(),
             ),
-      
+
             const SizedBox(height: 12),
-      
+
             // List of Nearby Partners
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
-                  HospitalCard(
-                    name: "City Hospital",
-                    distance: "2.5 km",
-                    badgeText: "Get 10% OFF",
-                    rating: 4.0,
-                    statusText: "Open: 24×7",
-                    statusColor: Colors.green,
-                    logoIcon: Icons.local_hospital_outlined,
-                    logoBgColor: const Color(0xFFE0F2F1),
-                    logoColor: const Color(0xFF0F8894),
-                    onBook: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const BookAppointmentscreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  HospitalCard(
-                    name: "PathKind Lab",
-                    distance: "2.6 km",
-                    badgeText: "Flat 200 OFF*",
-                    rating: 4.0,
-                    statusText: "Closes: 9pm",
-                    statusColor: Colors.grey.shade600,
-                    logoIcon: Icons.science_outlined,
-                    logoBgColor: const Color(0xFFFFF3E0),
-                    logoColor: Colors.orange,
-                    onBook: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const BookAppointmentscreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  HospitalCard(
-                    name: "Apolo Hospital",
-                    distance: "5.1 km",
-                    badgeText: "12% OFF*",
-                    rating: 4.0,
-                    statusText: "Open: 24×7",
-                    statusColor: Colors.green,
-                    logoIcon: Icons.apartment_outlined,
-                    logoBgColor: const Color(0xFFE8F5E9),
-                    logoColor: Colors.green,
-                    onBook: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const BookAppointmentscreen(),
-                        ),
-                      );
-                    },
-                  ),
+                  if (selectedCategory == "Hospitals") ...[
+                    HospitalCard(
+                      name: "City Hospital",
+                      distance: "2.5 km",
+                      badgeText: "Get 10% OFF",
+                      rating: 4.0,
+                      statusText: "Open: 24×7",
+                      statusColor: Colors.green,
+                      logoIcon: Icons.local_hospital_outlined,
+                      logoBgColor: const Color(0xFFE0F2F1),
+                      logoColor: const Color(0xFF0F8894),
+                      onBook: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BookAppointmentscreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    HospitalCard(
+                      name: "Apolo Hospital",
+                      distance: "5.1 km",
+                      badgeText: "12% OFF*",
+                      rating: 4.0,
+                      statusText: "Open: 24×7",
+                      statusColor: Colors.green,
+                      logoIcon: Icons.apartment_outlined,
+                      logoBgColor: const Color(0xFFE8F5E9),
+                      logoColor: Colors.green,
+                      onBook: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BookAppointmentscreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                  if (selectedCategory == "Labs") ...[
+                    HospitalCard(
+                      name: "PathKind Lab",
+                      distance: "2.6 km",
+                      badgeText: "Flat 200 OFF*",
+                      rating: 4.0,
+                      statusText: "Closes: 9pm",
+                      statusColor: Colors.grey.shade600,
+                      logoIcon: Icons.science_outlined,
+                      logoBgColor: const Color(0xFFFFF3E0),
+                      logoColor: Colors.orange,
+                      buttonText: "Book\nTest",
+                      onBook: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BookAppointmentscreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                  if (selectedCategory == "Stores") ...[
+                    HospitalCard(
+                      name: "Vansh Pharmacy",
+                      distance: "2.5 km",
+                      badgeText: "10% OFF*",
+                      rating: 4.5,
+                      statusText: "Open: 24×7",
+                      statusColor: Colors.green,
+                      logoIcon: Icons.storefront_outlined,
+                      logoBgColor: const Color(0xFFE8F5E9),
+                      logoColor: Colors.green,
+                      buttonText: "View\nStore",
+                      onBook: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AboutStorePage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                   const SizedBox(height: 16), // Bottom breathing room
                 ],
               ),

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/view/hospitalscreen/urgent&emergency.dart';
 
-class CategoryChips extends StatefulWidget {
-  const CategoryChips({super.key});
+class CategoryChips extends StatelessWidget {
+  final String selectedCategory;
+  final ValueChanged<String> onCategoryChanged;
 
-  @override
-  State<CategoryChips> createState() => _CategoryChipsState();
-}
-
-class _CategoryChipsState extends State<CategoryChips> {
-  String selectedCategory = "Hospitals";
+  const CategoryChips({
+    super.key,
+    required this.selectedCategory,
+    required this.onCategoryChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +16,16 @@ class _CategoryChipsState extends State<CategoryChips> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _chip("Hospitals", Icons.local_hospital_outlined, selectedCategory == "Hospitals", () {
-          setState(() {
-            selectedCategory = "Hospitals";
-          });
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const UrgentEmergencyScreen(),
-            ),
-          );
+          debugPrint("CategoryChips: Hospitals tapped");
+          onCategoryChanged("Hospitals");
         }),
         _chip("Labs", Icons.science_outlined, selectedCategory == "Labs", () {
-          setState(() {
-            selectedCategory = "Labs";
-          });
+          debugPrint("CategoryChips: Labs tapped");
+          onCategoryChanged("Labs");
         }),
         _chip("Stores", Icons.storefront_outlined, selectedCategory == "Stores", () {
-          setState(() {
-            selectedCategory = "Stores";
-          });
+          debugPrint("CategoryChips: Stores tapped");
+          onCategoryChanged("Stores");
         }),
       ],
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/view/bookappointment/bookappointment.dart';
 
 class HospitalCard extends StatelessWidget {
   final String name;
@@ -11,6 +10,7 @@ class HospitalCard extends StatelessWidget {
   final IconData logoIcon;
   final Color logoBgColor;
   final Color logoColor;
+  final String? buttonText;
   final VoidCallback onBook;
 
   const HospitalCard({
@@ -25,6 +25,7 @@ class HospitalCard extends StatelessWidget {
     required this.logoBgColor,
     required this.logoColor,
     required this.onBook,
+    this.buttonText,
   });
 
   @override
@@ -144,16 +145,9 @@ class HospitalCard extends StatelessWidget {
           ),
           const SizedBox(width: 10),
 
-          // Right: Book Appointment Button
+          // Right: Action Button
           ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BookAppointmentscreen(),
-                ),
-              );
-            },
+            onPressed: onBook,
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0F8894),
               foregroundColor: Colors.white,
@@ -163,10 +157,10 @@ class HospitalCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
               ),
             ),
-            child: const Text(
-              "Book\nAppointment",
+            child: Text(
+              buttonText ?? "Book\nAppointment",
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.bold,
                 height: 1.2,

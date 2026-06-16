@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/view/bookappointment/bookappointment.dart';
 
 class UrgentEmergencyScreen extends StatelessWidget {
   const UrgentEmergencyScreen({super.key});
