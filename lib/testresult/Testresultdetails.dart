@@ -29,9 +29,14 @@ class Testresultdetails extends StatelessWidget {
                   Positioned(
                     left: 20,
                     top: 80,
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
-                      color: Color(0xffe7e7e7),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                        color: Color(0xffe7e7e7),
+                      ),
                     ),
                   ),
                   Positioned(

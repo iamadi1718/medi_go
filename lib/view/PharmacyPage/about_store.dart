@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:medi_go/view/appointment/PharmacyPage/addcartscreen.dart';
 
 class Medication {
   final String id;
@@ -49,7 +49,7 @@ class _AboutStorePageState extends State<AboutStorePage> {
       brand: "Combiphar",
       description: "75ml syrup for cough",
       price: 65.00,
-      imagePath: "assets/images/obh_combi.png",
+      imagePath: "assets/images/cat2.png",
       category: "Medicines",
     ),
     Medication(
@@ -227,11 +227,18 @@ class _AboutStorePageState extends State<AboutStorePage> {
                         Icons.shopping_cart_outlined,
                         color: Colors.white,
                       ),
-                      onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => const AddCart()),
-                        // );
+                      onPressed: () async {
+                        final updatedCart = await Navigator.push<Map<String, int>>(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddCartScreen(initialCart: cart),
+                          ),
+                        );
+                        if (updatedCart != null) {
+                          setState(() {
+                            cart = Map<String, int>.from(updatedCart);
+                          });
+                        }
                       },
                     ),
                   ],
@@ -436,7 +443,7 @@ class _AboutStorePageState extends State<AboutStorePage> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                'assets/images/obh_combi.png',
+                'assets/images/cat2.png',
                 fit: BoxFit.contain,
               ),
             ),
@@ -696,11 +703,18 @@ class _AboutStorePageState extends State<AboutStorePage> {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const AddCart()),
-              // );
+            onTap: () async {
+              final updatedCart = await Navigator.push<Map<String, int>>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddCartScreen(initialCart: cart),
+                ),
+              );
+              if (updatedCart != null) {
+                setState(() {
+                  cart = Map<String, int>.from(updatedCart);
+                });
+              }
             },
             child: const Row(
               children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/PharmacyPage/addcartscreen.dart';
+import 'package:medi_go/view/appointment/PharmacyPage/addcartscreen.dart';
 
 class DrugDetailScreen extends StatefulWidget {
   final String id;
