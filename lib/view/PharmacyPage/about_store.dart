@@ -213,7 +213,7 @@ class _AboutStorePageState extends State<AboutStorePage> {
                         padding: EdgeInsets.only(top: 10),
                         child: Text(
                           'About Store',
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -228,12 +228,15 @@ class _AboutStorePageState extends State<AboutStorePage> {
                         color: Colors.white,
                       ),
                       onPressed: () async {
-                        final updatedCart = await Navigator.push<Map<String, int>>(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddCartScreen(initialCart: cart),
-                          ),
-                        );
+                        final updatedCart =
+                            await Navigator.push<Map<String, int>>(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) =>
+                                        AddCartScreen(initialCart: cart),
+                              ),
+                            );
                         if (updatedCart != null) {
                           setState(() {
                             cart = Map<String, int>.from(updatedCart);
@@ -442,10 +445,7 @@ class _AboutStorePageState extends State<AboutStorePage> {
             width: 100,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/images/cat2.png',
-                fit: BoxFit.contain,
-              ),
+              child: Image.asset('assets/images/cat2.png', fit: BoxFit.contain),
             ),
           ),
         ],

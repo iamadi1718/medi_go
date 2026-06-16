@@ -27,8 +27,10 @@ class _DashboardscreenState extends State<Dashboardscreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0xFF0E8A97),
+        backgroundColor: const Color(0xFF0F8894),
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
         title: Image.asset(
           'assets/images/logo.png',
           height: 36,
