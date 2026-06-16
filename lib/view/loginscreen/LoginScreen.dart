@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:medi_go/view/Signupscreen/Signupscreen.dart';
@@ -5,6 +6,7 @@ import 'package:medi_go/view/custombackground/CustomBackground.dart';
 import 'package:medi_go/view/custombutton/CustomButton.dart';
 import 'package:medi_go/view/customfield/CustomTextfield.dart';
 import 'package:medi_go/view/homepage/Homepage.dart';
+import 'package:medi_go/view/utils/Utils.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -14,6 +16,17 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+  final _formkey = GlobalKey<FormState>();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  @override
+  void dispose() {
+    emailcontroller.dispose();
+    passwordcontroller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -56,23 +69,49 @@ class _LoginscreenState extends State<Loginscreen> {
                     color: Colors.white,
                   ),
                 ),
-                Customtextfield(
-                  icon: Icon(Icons.email),
-                  text: 'Enter your email/phone number',
-                ),
-                Customtextfield(
-                  icon: Icon(Icons.lock),
-                  text: 'Enter your password',
-                ),
+                Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      Customtextfield(
+                        icon: Icon(Icons.email),
+                        text: 'Enter your email/phone number',
+                        controller: emailcontroller,
+                      ),
+                      Customtextfield(
+                        icon: Icon(Icons.lock),
+                        text: 'Enter your password',
+                        controller: passwordcontroller,
+                      ),
 
-                Custombutton(
-                  text: 'Login',
-                  onTaps: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Homepage()),
-                    );
-                  },
+                      Custombutton(
+                        text: 'Login',
+                        onTaps: () {
+                          if (_formkey.currentState!.validate()) {
+                            _auth
+                                .signInWithEmailAndPassword(
+                                  email: emailcontroller.text.toString(),
+                                  password: passwordcontroller.text.toString(),
+                                )
+                                .then((value) {
+                                  Utils().toastmessage(
+                                    value.user!.email.toString(),
+                                  );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Homepage(),
+                                    ),
+                                  );
+                                })
+                                .onError((error, stackTrace) {
+                                  Utils().toastmessage(error.toString());
+                                });
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
 
                 Row(

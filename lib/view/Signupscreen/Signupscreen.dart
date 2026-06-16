@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:medi_go/addresspage/Addaddresspage.dart';
+import 'package:medi_go/view/addresspage/Addaddresspage.dart';
 import 'package:medi_go/view/custombutton/CustomButton.dart';
 import 'package:medi_go/view/customfield/CustomTextfield.dart';
 import 'package:medi_go/view/loginscreen/LoginScreen.dart';
+import 'package:medi_go/view/utils/Utils.dart';
 
 class Signupscreen extends StatefulWidget {
   const Signupscreen({super.key});
@@ -12,6 +15,23 @@ class Signupscreen extends StatefulWidget {
 }
 
 class _SignupscreenState extends State<Signupscreen> {
+  final _formkey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,34 +85,61 @@ class _SignupscreenState extends State<Signupscreen> {
                     style: TextStyle(color: Colors.white),
                   ),
                   SizedBox(height: 20),
-                  Customtextfield(icon: Icon(Icons.person), text: 'Full Name'),
-                  Customtextfield(
-                    icon: Icon(Icons.phone),
-                    text: 'Enter phone number',
-                  ),
-                  Customtextfield(
-                    icon: Icon(Icons.mail),
-                    text: 'Enter Your email address',
-                  ),
-                  Customtextfield(
-                    icon: Icon(Icons.lock),
-                    text: 'Create Password',
-                  ),
-                  Customtextfield(
-                    icon: Icon(Icons.lock),
-                    text: 'Confirm Password',
-                  ),
-                  Custombutton(
-                    text: 'Sign up',
-                    onTaps: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Addaddresspage(),
+                  Form(
+                    key: _formkey,
+                    child: Column(
+                      children: [
+                        Customtextfield(
+                          icon: Icon(Icons.person),
+                          text: 'Full Name',
+                          controller: nameController,
                         ),
-                      );
-                    },
+                        Customtextfield(
+                          icon: Icon(Icons.phone),
+                          text: 'Enter phone number',
+                          controller: phoneController,
+                        ),
+                        Customtextfield(
+                          icon: Icon(Icons.mail),
+                          text: 'Enter Your email address',
+                          controller: emailController,
+                        ),
+                        Customtextfield(
+                          icon: Icon(Icons.lock),
+                          text: 'Create Password',
+                          controller: passwordController,
+                        ),
+                        Customtextfield(
+                          icon: Icon(Icons.lock),
+                          text: 'Confirm Password',
+                          controller: confirmPasswordController,
+                        ),
+                        Custombutton(
+                          text: 'Sign up',
+                          onTaps: () {
+                            if (_formkey.currentState!.validate()) {
+                              _auth.createUserWithEmailAndPassword(
+                                email: emailController.text.toString(),
+                                password: passwordController.text.toString(),
+                              ).then((value){
+                                Utils().toastmessage(value.user!.email.toString());
+                                  Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Addaddresspage(),
+                              ),
+                            );
+                              }).onError((error,stackTrace){
+                                 Utils().toastmessage(error.toString());
+                              });
+                            }
+                           
+                          },
+                        ),
+                      ],
+                    ),
                   ),
+
                   SizedBox(height: 20),
                   Row(
                     children: [

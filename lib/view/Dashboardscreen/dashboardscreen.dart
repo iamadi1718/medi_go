@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/testresult/Testresultdetails.dart';
+import 'package:medi_go/view/testresult/Testresultdetails.dart';
 import 'package:medi_go/view/Dashboardscreen/category_chips.dart';
 import 'package:medi_go/view/Dashboardscreen/hospital_card.dart';
 import 'package:medi_go/view/Dashboardscreen/nearby_partners_title.dart';

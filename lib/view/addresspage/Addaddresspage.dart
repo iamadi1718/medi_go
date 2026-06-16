@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/customaddresstextfield/Customaddresstextfield.dart';
+import 'package:medi_go/view/customaddresstextfield/Customaddresstextfield.dart';
 import 'package:medi_go/view/homepage/Homepage.dart';
 
 class Addaddresspage extends StatefulWidget {
