@@ -83,6 +83,18 @@ class _LoginscreenState extends State<Loginscreen> {
                         text: 'Enter your password',
                         controller: passwordcontroller,
                       ),
+                      InkWell(
+                        onTap: () {
+                          
+                        },
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text('Forgot Password?',style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                        ),
+                      ),
 
                       Custombutton(
                         text: 'Login',
