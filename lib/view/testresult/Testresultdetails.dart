@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medi_go/recommendationcard/Recommendationcard.dart';
+import 'package:medi_go/view/recommendationcard/Recommendationcard.dart';
 
 class Testresultdetails extends StatelessWidget {
   const Testresultdetails({super.key});

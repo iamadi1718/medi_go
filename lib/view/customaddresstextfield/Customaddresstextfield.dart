@@ -62,7 +62,7 @@ class _CustomaddresstextfieldState extends State<Customaddresstextfield> {
                   ),
                 ),
                 child: DropdownButtonFormField<String>(
-                  value: widget.value,
+                  initialValue: widget.value,
                   decoration: InputDecoration(
                     hintText: widget.text,
                     border: InputBorder.none,

@@ -21,7 +21,7 @@ class _SignupscreenState extends State<Signupscreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void dispose() {
     nameController.dispose();
@@ -118,22 +118,27 @@ class _SignupscreenState extends State<Signupscreen> {
                           text: 'Sign up',
                           onTaps: () {
                             if (_formkey.currentState!.validate()) {
-                              _auth.createUserWithEmailAndPassword(
-                                email: emailController.text.toString(),
-                                password: passwordController.text.toString(),
-                              ).then((value){
-                                Utils().toastmessage(value.user!.email.toString());
-                                  Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Addaddresspage(),
-                              ),
-                            );
-                              }).onError((error,stackTrace){
-                                 Utils().toastmessage(error.toString());
-                              });
+                              _auth
+                                  .createUserWithEmailAndPassword(
+                                    email: emailController.text.toString(),
+                                    password:
+                                        passwordController.text.toString(),
+                                  )
+                                  .then((value) {
+                                    Utils().toastmessage(
+                                      value.user!.email.toString(),
+                                    );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Addaddresspage(),
+                                      ),
+                                    );
+                                  })
+                                  .onError((error, stackTrace) {
+                                    Utils().toastmessage(error.toString());
+                                  });
                             }
-                           
                           },
                         ),
                       ],

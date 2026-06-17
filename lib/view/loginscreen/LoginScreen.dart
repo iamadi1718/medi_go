@@ -5,6 +5,7 @@ import 'package:medi_go/view/Signupscreen/Signupscreen.dart';
 import 'package:medi_go/view/custombackground/CustomBackground.dart';
 import 'package:medi_go/view/custombutton/CustomButton.dart';
 import 'package:medi_go/view/customfield/CustomTextfield.dart';
+import 'package:medi_go/view/forgotpassword/Forgotpassword.dart';
 import 'package:medi_go/view/homepage/Homepage.dart';
 import 'package:medi_go/view/utils/Utils.dart';
 
@@ -19,7 +20,7 @@ class _LoginscreenState extends State<Loginscreen> {
   final _formkey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void dispose() {
     emailcontroller.dispose();
@@ -85,14 +86,22 @@ class _LoginscreenState extends State<Loginscreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Forgotpassword(),
+                            ),
+                          );
                         },
                         child: Align(
                           alignment: Alignment.centerRight,
-                          child: Text('Forgot Password?',style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),),
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
 

@@ -16,7 +16,7 @@ class _MySwitchState extends State<MySwitch> {
       scale: 0.7,
       child: Switch(
         value: isOn,
-        activeColor: Colors.white,
+        activeThumbColor: Colors.white,
         activeTrackColor: Colors.teal,
         inactiveThumbColor: Colors.white,
         inactiveTrackColor: Colors.grey,

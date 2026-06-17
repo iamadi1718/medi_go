@@ -338,7 +338,7 @@ class _BookAppointmentscreenState extends State<BookAppointmentscreen> {
                   ),
                   const SizedBox(height: 8),
                   DropdownButtonFormField<String>(
-                    value: selectedSpeciality,
+                    initialValue: selectedSpeciality,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xFFEEEEEE),
