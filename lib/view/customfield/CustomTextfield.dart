@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Customtextfield extends StatelessWidget {
-  const Customtextfield({super.key, required this.icon, required this.text, required this.controller});
+  const Customtextfield({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.controller,
+    this.validator,
+  });
+
   final Icon icon;
   final String text;
   final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,6 +28,7 @@ class Customtextfield extends StatelessWidget {
       child: Center(
         child: TextFormField(
           controller: controller,
+          validator: validator,
           decoration: InputDecoration(
             prefixIcon: icon,
             hintText: text,
